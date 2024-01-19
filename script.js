@@ -33,4 +33,28 @@ function generateGameField() {
     tableRef.classList.add('ml-0', 'mr-0');
 
     let deck = [];
+
+    for(let i = 1; i < 9; i++) {
+        for(let j = 0; j < 2; j++) {
+            const card = {
+                value : i,
+                imageUrl : './images/' + i +'.jpg'
+            }
+            deck.push(card);
+        }
+    }
+
+    deck = shuffleDeck(deck);
+}
+
+function shuffleDeck(deck) {
+    let i, j, temp;
+    for (i = deck.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        temp = deck[i];
+        deck[i] = deck[j];
+        deck[j] = temp;
+    }
+
+    return deck;
 }
